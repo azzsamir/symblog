@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} - New{% endblock %}
+
+{% block body %}
+    {{ dump(form) }}
+    <h2>NEW ARTICLE</h2>
+    {{ form_start(form) }}
+    {{ form_row(form.title) }}
+    {% for category in form.category %}
+        {{ category.name }}
+    {% endfor %}
+    {{ form_end(form) }}
+{% endblock %}

@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} - Home{% endblock %}
+
+{% block body %}
+    <h1>SymBlog</h1>
+    <i>blog using Symfony4</i>
+
+    <section id="articleCont">
+        {% for article in articles %}
+            <section class="articleSolo">
+                <a href="{{ path('get_article', { id: article.id }) }}"><h2>{{ article.title }}</h2></a>
+                {% if article.image %}
+                    <img src="{{ asset('uploads/' ~ article.image) }}" alt="">
+                {% endif %}
+                <span class="articleDate">
+                {% for category in article.category %}
+                    <span class="badge badge-dark">{{ category.name }}</span>
+                {% endfor %}
+                 - {{ article.created|date }}</span>
+                <p>{{ article.content }}</p>
+            </section>
+        {% endfor %}
+    </section>
+{% endblock %}
+{% block stylesheets %}
+    <style>
+        h1 {
+            display: block;
+            text-align: center;
+            margin:0;
+            margin-top: 2vh;
+        }
+
+        img {
+            width: 100%;
+        }
+
+        i {
+            display: block;
+            text-align: center;
+        }
+
+        #articleCont {
+            background-color: #efefef;
+            padding: 1vw;
+            width: 60vw;
+            display: block;
+            margin: auto;
+            margin-top: 5vh;
+        }
+
+        .articleSolo {
+            padding: 1vw;
+        }
+
+        .articleSolo:not(:last-child) {
+            border-bottom: 1px solid #ccc;
+        }
+
+        .articleDate {
+            font-size: .8rem;
+            display: block;
+            text-align: right;
+        }
+
+        p {
+            margin: 0;
+            margin-top: 1vh;
+        }
+
+        h2 {
+            margin: 0;
+        }
+
+    </style>
+
+{% endblock %}

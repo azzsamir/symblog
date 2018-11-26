@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} - SOLO{% endblock %}
+
+{% block body %}
+<h2>SOLO</h2>
+    {{ article.title }}
+    <p>{{ article.content }}</p>
+
+    {% if article.comments %}
+        {% for comment in article.comments %}
+            {{ comment.user.username }}
+            <p>{{ comment.content }}</p>
+        {% endfor %}
+    {% endif %}
+    <div>
+        <h3>comment</h3>
+        {{ form_start(form) }}
+        {{ form_end(form) }}
+
+    </div>
+{% endblock %}

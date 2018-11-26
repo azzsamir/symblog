@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} - Dashboard{% endblock %}
+
+{% block body %}
+   <h2>DASHBOARD</h2>
+   <a href="{{ path("new_article") }}" class="btn btn-primary">Créer un article</a>
+
+   <h2>Derniers articles</h2>
+
+{% endblock %}
